@@ -1,3 +1,4 @@
+# sh hindi.sh main.hindi
 import sys
 import os
 vars = {}
@@ -22,7 +23,6 @@ def hindi(code):
           ad = "'"
         listed[i+1] = ad+str(vars[listed[i+1]])+ad
     code = ''.join(listed)
-    code = code.replace('में', ' in ')
     return code
   def printnl(stf):
     global newline
@@ -48,6 +48,8 @@ def hindi(code):
       elif line[5:].startswith('नई') and toexec:
         print()
         newline = False
+      elif line[5:].startswith('स्प') and toexec:
+        printnl(' ')
       else:
         printnl(line[5:])
     elif line.startswith('वार') and toexec:
@@ -69,7 +71,7 @@ def hindi(code):
           val = ttype(' '.join(newline[j+1:-2]))
           typeset = False
       vars[var] = val
-    elif line.startswith('मत करे'):
+    elif line.startswith('मत करे:'):
       continue
     elif line.startswith('सब गायब') and toexec:
       os.system('clear')
